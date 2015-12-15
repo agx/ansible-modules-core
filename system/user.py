@@ -339,6 +339,11 @@ class User(object):
                     cmd.append('-n')
                 else:
                     cmd.append('-N')
+            elif os.path.exists('/etc/SuSE-release'):
+                dist = platform.dist()
+                major_release = int(dist[1].split('.')[0])
+                if major_release >= 12:
+                    cmd.append('-N')
             else:
                 cmd.append('-N')
 
